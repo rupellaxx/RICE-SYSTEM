@@ -12,7 +12,6 @@ class OrderController extends Controller
 {
     public function store(Request $request)
     {
-        // Filter out items with 0 quantity
         $items = collect($request->items)->filter(fn($item) => ($item['quantity'] ?? 0) > 0);
 
         if ($items->isEmpty()) {
